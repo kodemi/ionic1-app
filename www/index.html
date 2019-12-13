@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"
+        />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src *; 
+      style-src &apos;self&apos; &apos;unsafe-inline&apos; http://fonts.googleapis.com;
+      script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos;;
+      img-src &apos;self&apos; data:;"
+        />
+        <title></title>
+
+        <link rel="manifest" href="manifest.json" />
+
+        <!--
+            un-comment this code to enable service worker
+            <script>
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js')
+                  .then(() => console.log('service worker installed'))
+                  .catch(err => console.log('Error', err));
+              }
+            </script>
+        -->
+
+        <link href="lib/ionic/css/ionic.css" rel="stylesheet" />
+        <link
+            href="http://fonts.googleapis.com/css?family=Roboto%3A400%2C500%2C700%2C300&amp;subset=latin%2Ccyrillic"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="lib/ionic-filter-bar/dist/ionic.filter.bar.min.css"
+            rel="stylesheet"
+        />
+        <link href="css/style.css" rel="stylesheet" />
+
+        <!--
+            IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+            <link href="css/ionic.app.css" rel="stylesheet">
+        -->
+
+        <!-- ionic/angularjs js -->
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
+        <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+        <!-- <script src="lib/ionic-native/ionic.native.js"></script> -->
+
+        <!-- cordova script (this will be a 404 during development) -->
+        <script src="cordova.js"></script>
+
+        <!-- your app's js -->
+        <script src="lib/moment/min/moment.min.js"></script>
+        <script src="lib/moment/locale/ru.js"></script>
+        <script src="lib/moment-timezone/builds/moment-timezone-with-data-2012-2022.min.js"></script>
+        <script src="lib/angular-moment/angular-moment.min.js"></script>
+        <script src="lib/angular-resource/angular-resource.min.js"></script>
+        <script src="lib/angular-cache/dist/angular-cache.min.js"></script>
+        <script src="lib/signature_pad/signature_pad.js"></script>
+        <script src="lib/satellizer/dist/satellizer.min.js"></script>
+        <script src="lib/ionic-modal-select/dist/ionic-modal-select.js"></script>
+        <script src="lib/ionic-filter-bar/dist/ionic.filter.bar.min.js"></script>
+        <script src="lib/ionic-rating/ionic-rating.min.js"></script>
+        <script src="lib/angular-cookies/angular-cookies.min.js"></script>
+        <script src="lib/angular-translate/angular-translate.min.js"></script>
+        <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+        <script src="lib/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+        <script src="lib/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
+
+        <!-- your app's js -->
+        <script src="app/config.js"></script>
+        <script src="app/common/common.js"></script>
+        <script src="app/common/utils.js"></script>
+        <script src="app/common/modals.js"></script>
+        <script src="app/common/logging.js"></script>
+        <script src="app/common/nativedatepicker.js"></script>
+        <script src="app/common/directives.js"></script>
+        <script src="app/common/signaturePad.js"></script>
+        <script src="app/common/auth/auth.js"></script>
+        <script src="app/common/auth/account.js"></script>
+        <script src="app/common/auth/loginController.js"></script>
+        <script src="app/common/auth/logoutController.js"></script>
+        <script src="app/common/auth/profileController.js"></script>
+
+        <script src="app/app.js"></script>
+        <script src="app/layout/menuController.js"></script>
+        <script src="app/flights/flightItem/controller.js"></script>
+        <script src="app/flights/flightsController.js"></script>
+        <script src="app/flights/archiveController.js"></script>
+        <script src="app/flights/gho/controller.js"></script>
+        <script src="app/services/dataservice.js"></script>
+        <script src="app/services/flight.js"></script>
+    </head>
+    <body ng-app="jpsApp">
+        <ion-nav-view></ion-nav-view>
+    </body>
+</html>

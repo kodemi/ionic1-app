@@ -1,0 +1,312 @@
+/* Empty. Add your own CSS if you like */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 .item,
+.item-divider {
+    font-family: Roboto;
+}
+
+.title.title-left.header-item {
+    min-width: 185px;
+}
+
+.flight-list-item {
+    left: 0;
+    right: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.flight-list-item.ng-leave {
+    -webkit-animation: fadeOutUp 1s;
+    animation: fadeOutUp 1s;
+}
+
+.flight-list-item h2 {
+    font-weight: 700;
+    font-size: 1.5em;
+    color: #5a5a5a;
+}
+
+.flight-list-item h3,
+.flight-detail-info h3,
+.flight-list-item h5 {
+    color: #a0a0a0;
+    line-height: 20px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.flight-list-item h3 {
+    font-size: 12px;
+}
+
+.flight-list-item h3.subtitle {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.flight-list-item .important {
+    color: #8b0000;
+}
+
+.status-icons {
+    padding-left: 5px;
+    color: #a9a9a9;
+}
+
+.flight-list-item p,
+.flight-detail-info p,
+.service-list-item p {
+    margin-bottom: 0;
+}
+
+.flight-list-item.finished {
+    background-color: #e0eae3;
+}
+
+.flight-operation p {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.action-sheet .button {
+    color: rgb(90, 90, 90);
+}
+
+.signature-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.signature-clear {
+    position: absolute;
+    font-size: 24px;
+    top: 0;
+    right: 0;
+}
+
+.signature {
+    border: 3px dashed gray;
+    background-color: rgb(245, 245, 217);
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.popup-container .popup {
+    width: 95%;
+    max-width: 500px;
+}
+
+.list .item .icon.button {
+    min-height: initial !important;
+}
+
+.ionic .padding {
+    padding: 10px;
+}
+
+.brand {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    color: #5a5a5a;
+}
+
+.brand-subheading {
+    padding-left: 0.5em;
+    margin-bottom: 3px;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 90%;
+    font-size: 60%;
+    color: #5a5a5a;
+}
+
+.platform-android .action-sheet-group {
+    padding-left: 15px;
+}
+
+.modal-backdrop,
+.modal-backdrop-bg {
+    z-index: 20;
+}
+
+.modal-select {
+    z-index: 21;
+    pointer-events: auto !important;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.padding-right {
+    padding-right: 15px;
+}
+
+.option-selected {
+    background-color: #c3c3c3;
+}
+
+.danger {
+    color: #8b0000;
+}
+
+.flight-detail-info .item h3,
+.flight-detail-info .item p {
+    font-size: 10px;
+    line-height: 16px;
+}
+
+.operation-time {
+    font-size: 12px;
+    /*line-height: 12px;*/
+    font-weight: bold;
+}
+
+.item-divider h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.item-divider h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+ul.rating li {
+    display: inline;
+    border: 0px;
+    background: none;
+    padding: 5px 10px;
+}
+
+ul.rating li i {
+    font-size: 30px;
+    color: #ffdc14;
+}
+
+.item-input input[type='number'] {
+    text-align: right;
+}
+
+.item-input.text-left input[type='number'] {
+    text-align: left;
+}
+
+.gho .item.row,
+.gho .item .col {
+    padding: 0;
+}
+
+.gho .item-divider h3 {
+    font-size: 11px;
+}
+
+.gho .item-divider.primary {
+    background-color: #3b4b5b;
+}
+
+.gho .item-divider.primary h2 {
+    color: white;
+}
+
+.gho .item-divider {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.item {
+    white-space: normal;
+}
+
+.gho .input-label {
+    width: 80%;
+}
+
+.gho label.item-select .input-label {
+    width: 35%;
+}
+
+.col .input-label {
+    width: initial;
+}
+
+.gho .rating + h3 {
+    margin-top: 15px;
+}
+
+.transfer-list .button-assertive,
+.crew-storage-list .button-assertive {
+    justify-content: center;
+    font-size: 22px;
+}
+
+.gho_hotel {
+    margin-bottom: 10px;
+}
+
+.gho_hotel:last-of-type {
+    margin-bottom: 0;
+}
+
+.gho_hotel_comment {
+    font-size: 80% !important;
+}
+
+.gho_hotel__no-reservations {
+    font-size: 80% !important;
+    font-style: italic;
+}
+
+.gho_transfer_field_title {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.gho_transfers__empty {
+    font-size: 80% !important;
+    font-style: italic;
+}
+
+.gho_pax-service {
+    display: flex;
+    justify-content: space-between;
+}
+
+.passenger-apron-transfer {
+    padding: 10px 16px !important;
+    flex-direction: column;
+}
+
+.crew-storage-list .item-content {
+    padding: 10px;
+}
+
+.crew-storage-list .input-label {
+    width: inherit;
+}
+
+.crew-storage-item {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}

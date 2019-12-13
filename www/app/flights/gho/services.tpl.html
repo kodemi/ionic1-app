@@ -1,0 +1,57 @@
+<ion-item class="item-divider primary"> <h2>Services</h2> </ion-item>
+<ion-toggle ng-model="vm.ghoDataFromFlight.urgentRequest" ng-disabled="true"
+    >Urgent request</ion-toggle
+>
+<ion-toggle
+    ng-model="vm.gho.services.handlingArrangements"
+    ng-disabled="vm.disabled"
+    >Handling arrangements</ion-toggle
+>
+<label class="item item-input">
+    <span class="input-label">Long term parking</span>
+    <input
+        type="number"
+        min="0"
+        ng-model="vm.ghoDataFromFlight.longTermParking"
+        ng-disabled="true"
+    />
+</label>
+<ion-toggle ng-model="vm.ghoDataFromFlight.slotCoordination" ng-disabled="true"
+    >Slot coordination</ion-toggle
+>
+<label class="item item-input">
+    <span class="input-label">Slot correction</span>
+    <input
+        type="number"
+        min="0"
+        ng-model="vm.ghoDataFromFlight.slotCorrection"
+        disabled
+        select-on-focus
+    />
+</label>
+<label class="item item-input">
+    <span class="input-label">Documentation print out</span>
+    <input
+        type="number"
+        min="0"
+        ng-model="vm.gho.services.documentationPrintOut"
+        ng-disabled="vm.disabled"
+        select-on-focus
+    />
+</label>
+<ion-toggle ng-model="vm.gho.services.weatherInfo" ng-disabled="vm.disabled"
+    >Weather info</ion-toggle
+>
+<ion-toggle
+    ng-model="vm.gho.services.fuelArrangements.value"
+    ng-disabled="vm.disabled"
+    >Fuel arrangements</ion-toggle
+>
+<label class="item item-input">
+    <textarea
+        placeholder="Fuel arrangements comment"
+        rows="3"
+        ng-model="vm.gho.services.fuelArrangements.comment"
+        ng-disabled="vm.disabled"
+    ></textarea>
+</label>

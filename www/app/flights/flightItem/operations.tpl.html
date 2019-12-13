@@ -1,0 +1,123 @@
+<ion-list>
+    <div class="item item-divider text-center">
+        {{ 'FLIGHT_DETAIL.OPERATIONS' | translate }}
+    </div>
+
+    <ion-item
+        class="item-divider"
+        ng-if="vm.flight.arrival && vm.flight.departure"
+    >
+        {{ 'FLIGHT_DETAIL.ARRIVAL' | translate }}
+    </ion-item>
+    <ion-item
+        ng-if="vm.flight.arrival"
+        ng-repeat="operation in vm.operations.arrival track by $index"
+        class="flight-operation"
+    >
+        <div ng-click="vm.onOperationTap()">
+            <p>{{ 'OPERATIONS.' + operation.key | translate }}</p>
+            <p class="operation-time">
+                {{ vm.getTime(vm.flight.arrival[operation.name]) }}
+            </p>
+            <ion-option-button
+                ng-if="!vm.flight['Архивный'] && !vm.flight.arrival[operation.name]"
+                class="button-positive"
+                ng-click="vm.setOperation(operation, 'arrival')"
+            >
+                {{ 'FLIGHT_DETAIL.SET' | translate }}
+            </ion-option-button>
+            <ion-option-button
+                ng-if="!vm.flight['Архивный'] && vm.flight.arrival[operation.name]"
+                class="button-assertive"
+                ng-click="vm.unsetOperation(operation, 'arrival')"
+            >
+                {{ 'FLIGHT_DETAIL.REMOVE' | translate }}
+            </ion-option-button>
+        </div>
+    </ion-item>
+
+    <ion-item
+        class="item-divider"
+        ng-if="vm.flight.arrival && vm.flight.departure"
+    >
+        {{ 'FLIGHT_DETAIL.DEPARTURE' | translate }}
+    </ion-item>
+    <ion-item
+        ng-if="vm.flight.departure"
+        ng-repeat="operation in vm.operations.departure track by $index"
+        class="flight-operation"
+    >
+        <div ng-click="vm.onOperationTap()">
+            <p>{{ 'OPERATIONS.' + operation.key | translate }}</p>
+            <p class="operation-time">
+                {{ vm.getTime(vm.flight.departure[operation.name]) }}
+            </p>
+            <ion-option-button
+                ng-if="!vm.flight['Архивный'] && !vm.flight.departure[operation.name]"
+                class="button-positive"
+                ng-click="vm.setOperation(operation, 'departure')"
+            >
+                {{ 'FLIGHT_DETAIL.SET' | translate }}
+            </ion-option-button>
+            <ion-option-button
+                ng-if="!vm.flight['Архивный'] && vm.flight.departure[operation.name]"
+                class="button-assertive"
+                ng-click="vm.unsetOperation(operation, 'departure')"
+            >
+                {{ 'FLIGHT_DETAIL.REMOVE' | translate }}
+            </ion-option-button>
+        </div>
+    </ion-item>
+
+    <ion-item class="item-divider">
+        {{ 'FLIGHT_DETAIL.ANGAR_USE' | translate }}
+    </ion-item>
+    <div ng-repeat="item in vm.angar">
+        <div class="item item-divider">
+            <h4>#{{ $index + 1 }}</h4>
+        </div>
+        <ion-item class="flight-operation">
+            <p>{{ 'OPERATIONS.ANGAR_IN' | translate }}</p>
+            <p class="operation-time">
+                {{ vm.getTime(item['ВремяУстановки']) }}
+            </p>
+            <ion-option-button
+                ng-if="!vm.flight['Архивный'] && !item['ВремяУстановки']"
+                class="button-positive"
+                ng-click="vm.setOperation({key: 'ANGAR_IN', name: 'ВремяУстановки', id: item.id }, 'angarUse')"
+            >
+                {{ 'FLIGHT_DETAIL.SET' | translate }}
+            </ion-option-button>
+            <ion-option-button
+                ng-if="!vm.flight['Архивный'] && item['ВремяУстановки']"
+                class="button-assertive"
+                ng-click="vm.unsetOperation({key: 'ANGAR_IN', name: 'ВремяУстановки', id: item.id }, 'angarUse')"
+            >
+                {{ 'FLIGHT_DETAIL.REMOVE' | translate }}
+            </ion-option-button>
+        </ion-item>
+        <ion-item class="flight-operation">
+            <p>{{ 'OPERATIONS.ANGAR_OUT' | translate }}</p>
+            <p class="operation-time">
+                {{ vm.getTime(item['ВремяВыкатки']) }}
+            </p>
+            <ion-option-button
+                ng-if="!vm.flight['Архивный'] && !item['ВремяВыкатки']"
+                class="button-positive"
+                ng-click="vm.setOperation({key: 'ANGAR_OUT', name: 'ВремяВыкатки', id: item.id }, 'angarUse')"
+            >
+                {{ 'FLIGHT_DETAIL.SET' | translate }}
+            </ion-option-button>
+            <ion-option-button
+                ng-if="!vm.flight['Архивный'] && item['ВремяВыкатки']"
+                class="button-assertive"
+                ng-click="vm.unsetOperation({key: 'ANGAR_OUT', name: 'ВремяВыкатки', id: item.id }, 'angarUse')"
+            >
+                {{ 'FLIGHT_DETAIL.REMOVE' | translate }}
+            </ion-option-button>
+        </ion-item>
+    </div>
+    <button class="button button-block" on-tap="vm.addAngar()">
+        <i class="icon ion-plus"></i>
+    </button>
+</ion-list>

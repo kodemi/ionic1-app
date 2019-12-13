@@ -1,0 +1,36 @@
+<ion-view title="{{'ARCHIVE' | translate}}">
+    <ion-content class="has-header">
+        <ion-refresher pulling-text="{{'PULL_TO_REFRESH' | translate}}" on-refresh="vm.doRefresh()">
+        </ion-refresher>
+        <div class="list">
+            <div class="item item-icon-right flight-list-item" collection-repeat="flight in vm.flights" collection-item-width="'100%'"
+                collection-item-height="148" ng-style="{height: 148}" on-tap="vm.selectFlight(flight.id)">
+                <div on-hold="vm.showFlightOperations(flight)">
+                    <div class="row">
+                        <div class="col">
+                            <h2><i ng-class="{'ion-arrow-up-a': flight['ЭтоВылет'], 'ion-arrow-down-a': !flight['ЭтоВылет']}"></i>
+                                {{flight['ВС']}}
+                                <i class="icon ion-chevron-right icon-accessory"></i>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-33">
+                            <h3>{{"FLIGHT_LIST.FROM" | translate}}:</h3>
+                            <h3>{{"FLIGHT_LIST.TO" | translate}}:</h3>
+                            <h3>{{"FLIGHT_LIST.SCHEDULED" | translate}}:</h3>
+                            <h3>{{"FLIGHT_LIST.STATE" | translate}}:</h3>
+                        </div>
+                        <div class="col">
+                            <p>{{flight['АэропортВылетаСтрока']}}</p>
+                            <p>{{flight['АэропортПрилетаСтрока']}}</p>
+                            <p>{{((flight['ЭтоВылет'] ? flight['ВылетПоПлану'] : flight['ПрилетПоПлану']) | amDateFormat:"DD.MM
+                                HH:mm") || '-'}}</p>
+                            <p>{{vm.getState(flight)}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

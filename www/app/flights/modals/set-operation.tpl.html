@@ -1,0 +1,22 @@
+<div class="list">
+    <div ng-if="vm.isWebView()">
+        <label class="item item-input">
+            <span class="input-label">{{"OPERATION_DATE" | translate}}:</span>
+            <input type="text" readonly nativedatepicker date-format="L" date-mode="date" ng-model="vm.operationDate" />
+        </label>
+        <label class="item item-input">
+            <span class="input-label">{{"OPERATION_TIME" | translate}} (UTC):</span>
+            <input type="text" readonly nativedatepicker date-format="HH:mm" date-mode="time" utc ng-model="vm.operationTime" />
+        </label>
+    </div>
+    <div ng-if="!vm.isWebView()">
+        <label class="item item-input">
+            <span class="input-label">Дата операции</span>
+            <input type="date"/>
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Время операции</span>
+            <input type="time" />
+        </label>
+    </div>
+</div>

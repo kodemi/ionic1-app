@@ -1,0 +1,130 @@
+<div class="flight-detail-info" ng-click="vm.onFlightDetailInfoTap()">
+    <div class="item">
+        <!-- Arrival -->
+        <div class="row" ng-if="vm.flight.arrival">
+            <div class="col col-40">
+                <h3 style="font-weight: bold; color: black">
+                    {{ 'FLIGHT_DETAIL.ARRIVAL' | translate }}
+                </h3>
+                <h3>{{ 'FLIGHT_DETAIL.DEPARTURE_AIRPORT' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.SCHEDULED_ARRIVAL' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.ESTIMATED_ARRIVAL' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.ACTUAL_ARRIVAL' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.PARKING_AREA' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.PAX' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.TERMINAL' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.COMMENT' | translate }}:</h3>
+            </div>
+            <div class="col">
+                <p>&nbsp;</p>
+                <p>
+                    {{ vm.flight[vm.flight.arrival ? 'arrival' : 'departure']
+                    .i18n[vm.lang]['АэропортВылетаСтрока'] || '-' }}
+                </p>
+                <p>
+                    {{ vm.getTime( vm.flight[ vm.flight.arrival ? 'arrival' :
+                    'departure' ]['ПрилетПоПлану'], '-' ) }}
+                </p>
+                <p>
+                    {{ vm.getTime( vm.flight[ vm.flight.arrival ? 'arrival' :
+                    'departure' ]['РасчетноеВремя'], '-' ) }}
+                </p>
+                <p style="font-weight: bold">
+                    {{ vm.getTime( vm.flight[ vm.flight.arrival ? 'arrival' :
+                    'departure' ]['ПрилетПоФакту'], '-' ) }}
+                </p>
+                <p>{{ vm.flight.arrival['Стоянка'] || '-' }}</p>
+                <p>{{ vm.flight.arrival['Пассажиры'] || '-' }}</p>
+                <p>{{ vm.flight.arrival['ТермПрил'] || '-' }}</p>
+                <p style="white-space: normal">
+                    {{ vm.flight.arrival['Примечание'] || '-' }}
+                </p>
+            </div>
+        </div>
+
+        <!-- Departure -->
+        <div class="row" ng-if="vm.flight.departure">
+            <div class="col col-40">
+                <h3 style="font-weight: bold; color: black">
+                    {{ 'FLIGHT_DETAIL.DEPARTURE' | translate }}
+                </h3>
+                <h3>{{ 'FLIGHT_DETAIL.ARRIVAL_AIRPORT' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.SCHEDULED_DEPARTURE' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.ACTUAL_DEPARTURE' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.PARKING_AREA' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.PAX' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.TERMINAL' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.COMMENT' | translate }}:</h3>
+            </div>
+            <div class="col">
+                <p>&nbsp;</p>
+                <p>
+                    {{ vm.flight[vm.flight.departure ? 'departure' : 'arrival']
+                    .i18n[vm.lang]['АэропортПрилетаСтрока'] || '-' }}
+                </p>
+                <p>
+                    {{ vm.getTime( vm.flight[ vm.flight.departure ? 'departure'
+                    : 'arrival' ]['ВылетПоПлану'], '-' ) }}
+                </p>
+                <p style="font-weight: bold">
+                    {{ vm.getTime( vm.flight[ vm.flight.departure ? 'departure'
+                    : 'arrival' ]['ВылетПоФакту'], '-' ) }}
+                </p>
+                <p>{{ vm.flight.departure['Стоянка'] || '-' }}</p>
+                <p>{{ vm.flight.departure['Пассажиры'] || '-' }}</p>
+                <p>{{ vm.flight.departure['ТермВыл'] || '-' }}</p>
+                <p style="white-space: normal">
+                    {{ vm.flight.departure['Примечание'] || '-' }}
+                </p>
+            </div>
+        </div>
+
+        <!-- Common -->
+        <div class="row">
+            <div class="col col-40">
+                <h3>{{ 'FLIGHT_DETAIL.FLIGHT_NUMBER' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.AC_TYPE' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.FUEL' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.OPERATOR' | translate }}:</h3>
+                <h3>{{ 'FLIGHT_DETAIL.GHO_TIME' | translate }}:</h3>
+            </div>
+            <div class="col">
+                <p>
+                    {{ vm.flight['НомерРейса'] || '-' }}
+                </p>
+                <p>
+                    {{ vm.flight['ТипВС'] || '-' }}
+                </p>
+                <p>
+                    {{ vm.flight[vm.flight.arrival ? 'arrival' : 'departure'][
+                    'Требование' ] || '-' }}
+                </p>
+                <p>
+                    {{ vm.flight[vm.flight.arrival ? 'arrival' : 'departure']
+                    .i18n[vm.lang]['Оператор'] || '-' }}
+                </p>
+                <p>{{ vm.getTime(vm.flight['ВремяGHO'], '-') }}</p>
+            </div>
+        </div>
+    </div>
+    <ion-item ng-click="vm.editComment()">
+        <div class="row" style="flex-direction: column">
+            <h3>
+                {{ 'FLIGHT_DETAIL.GHO_COMMENT' | translate }}
+            </h3>
+            <p ng-if="!vm.editingComment" style="white-space: normal">
+                {{ vm.flight['КомментарийGHO'] }}
+            </p>
+            <label class="item item-input" ng-if="vm.editingComment">
+                <textarea rows="5" ng-model="vm.comment"></textarea>
+            </label>
+            <button
+                class="button button-block button-calm"
+                on-tap="vm.saveComment()"
+                ng-show="vm.editingComment"
+            >
+                {{ 'SAVE' | translate }}
+            </button>
+        </div>
+    </ion-item>
+</div>
