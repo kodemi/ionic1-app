@@ -1,0 +1,195 @@
+<ion-view view-title="Рейсы в работе">
+    <ion-nav-title>
+        {{ 'CURRENT_FLIGHTS' | translate }}
+        <i class="badge badge-stable" ng-bind="vm.flightsCount"></i>
+        <span ng-if="vm.showMode === 'dateFlights'" style="font-size: 50%">
+            {{ vm.flightsDate.format('L') }}
+        </span>
+    </ion-nav-title>
+    <ion-nav-buttons side="secondary">
+        <button
+            class="button button-icon icon ion-ios-search-strong"
+            ng-click="vm.showFilterBar()"
+        ></button>
+        <button
+            class="button button-icon icon ion-funnel"
+            ng-click="vm.showSortOptions()"
+        ></button>
+        <button
+            class="button button-icon icon ion-android-more-vertical"
+            on-tap="vm.showOptions()"
+        ></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header" delegate-handle="flightsDelegate">
+        <ion-refresher
+            pulling-text="{{ 'PULL_TO_REFRESH' | translate }}"
+            on-refresh="vm.doRefresh()"
+        >
+        </ion-refresher>
+
+        <ion-list>
+            <ion-item
+                class="item-icon-right flight-list-item item-remove-animate"
+                collection-repeat="flight in vm.flights | filter:vm.flightFilter:vm.contains"
+                collection-item-width="'100%'"
+                collection-item-height="330"
+                ng-style="{height: 330}"
+                ng-class="{'finished': (flight['ПрилетПоФакту'] && flight['ВылетПоФакту'])}"
+                on-tap="vm.selectFlight(flight.id)"
+            >
+                <div on-hold="vm.showFlightOperations(flight)">
+                    <div class="row">
+                        <div class="col">
+                            <h2>
+                                <span
+                                    ng-class="{'important': flight.arrival && flight.arrival['Контроль'] || flight.departure && flight.departure['Контроль']}"
+                                    >{{ flight['ВС'] }}</span
+                                >
+                                <span class="status-icons">
+                                    <i
+                                        class="ion-checkmark-circled balanced"
+                                        ng-if="flight.departure && flight.departure['Готовность']"
+                                    ></i>
+                                    <i
+                                        ng-class="['ion-ios-paper', {'balanced': flight['ВремяGHO']}]"
+                                        ng-if="flight['ВремяGHO'] || flight.GHO"
+                                    ></i>
+                                </span>
+                                <i
+                                    class="icon ion-chevron-right icon-accessory"
+                                ></i>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-33">
+                            <h3>{{ 'FLIGHT_LIST.FROM' | translate }}:</h3>
+                            <h3>{{ 'FLIGHT_LIST.TO' | translate }}:</h3>
+                            <h3 class="subtitle">
+                                {{ 'FLIGHT_LIST.ARRIVAL' | translate }}
+                            </h3>
+                            <h3>{{ 'FLIGHT_LIST.SCHEDULED' | translate }}:</h3>
+                            <h3>{{ 'FLIGHT_LIST.ESTIMATED' | translate }}:</h3>
+                            <h3>{{ 'FLIGHT_LIST.ACTUAL' | translate }}:</h3>
+                            <h3 class="subtitle">
+                                {{ 'FLIGHT_LIST.DEPARTURE' | translate }}
+                            </h3>
+                            <h3>{{ 'FLIGHT_LIST.SCHEDULED' | translate }}:</h3>
+                            <h3>{{ 'FLIGHT_LIST.ACTUAL' | translate }}:</h3>
+                            <h3>{{ 'FLIGHT_LIST.FPL' | translate }}:</h3>
+                            <h3 style="margin-top: 5px">
+                                {{ 'FLIGHT_LIST.TERMINAL' | translate }}:
+                            </h3>
+                            <h3>{{ 'FLIGHT_LIST.STATE' | translate }}:</h3>
+                        </div>
+                        <div class="col">
+                            <p>
+                                {{
+                                    (flight.arrival &&
+                                        flight.arrival.i18n[vm.lang][
+                                            'АэропортВылетаСтрока'
+                                        ]) ||
+                                        flight.departure.i18n[vm.lang][
+                                            'АэропортВылетаСтрока'
+                                        ]
+                                }}
+                            </p>
+                            <p>
+                                {{
+                                    (flight.departure &&
+                                        flight.departure.i18n[vm.lang][
+                                            'АэропортПрилетаСтрока'
+                                        ]) ||
+                                        flight.arrival.i18n[vm.lang][
+                                            'АэропортПрилетаСтрока'
+                                        ]
+                                }}
+                            </p>
+
+                            <!-- Прилет -->
+                            <h3 class="subtitle">&nbsp;</h3>
+                            <p>
+                                {{
+                                    vm.getTime(
+                                        flight.arrival,
+                                        'План',
+                                        false,
+                                        '-'
+                                    )
+                                }}
+                            </p>
+                            <p>
+                                {{
+                                    vm.getTime(
+                                        flight.arrival,
+                                        'РасчетноеВремя',
+                                        false,
+                                        '-'
+                                    )
+                                }}
+                            </p>
+                            <p>
+                                {{
+                                    vm.getTime(
+                                        flight.arrival,
+                                        'Факт',
+                                        false,
+                                        '-'
+                                    )
+                                }}
+                            </p>
+                            <!-- Вылет -->
+                            <h3 class="subtitle">&nbsp;</h3>
+                            <p>
+                                {{
+                                    vm.getTime(
+                                        flight.departure,
+                                        'План',
+                                        true,
+                                        '-'
+                                    )
+                                }}
+                            </p>
+                            <p>
+                                {{
+                                    vm.getTime(
+                                        flight.departure,
+                                        'Факт',
+                                        true,
+                                        '-'
+                                    )
+                                }}
+                            </p>
+                            <p>
+                                {{
+                                    vm.getTime(
+                                        flight.departure,
+                                        'ФПЛ',
+                                        true,
+                                        '-'
+                                    )
+                                }}
+                            </p>
+                            <p style="margin-top: 5px">
+                                {{
+                                    (flight.departure &&
+                                        flight.departure['ТермВыл']) ||
+                                        (flight.arrival &&
+                                            flight.arrival['ТермПрил']) ||
+                                        '-'
+                                }}
+                            </p>
+                            <p>{{ vm.getState(flight) }}</p>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <ion-item
+            ng-if="vm.flights !== undefined && !vm.flights.length"
+            class="no-results"
+        >
+            <p class="text-center" translate>EMPTY_FLIGHTS</p>
+        </ion-item>
+    </ion-content>
+</ion-view>

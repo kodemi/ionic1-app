@@ -1,0 +1,19 @@
+<ion-view>
+    <div ng-if="!vm.isWebView()">
+        <ion-header-bar>
+            <h1 class="title">Вход в приложение</h1>
+        </ion-header-bar>
+        <ion-content>
+            <form ng-submit="vm.login()">
+                <div class="card">
+                    <label class="item item-input">
+                        <input type="password" placeholder="ПИН-код" ng-model="vm.pincode">
+                    </label>
+                </div>
+                <div class="padding">
+                    <button class="button button-block button-positive" type="submit">Войти</button>
+                </div>
+            </form>
+        </ion-content>
+    </div>
+</ion-view>

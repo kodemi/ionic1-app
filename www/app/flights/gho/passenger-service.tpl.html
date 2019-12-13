@@ -1,0 +1,423 @@
+<ion-item class="item-divider primary"> <h2>Passenger service</h2> </ion-item>
+<ion-item class="item-divider">
+    <h3>Passenger service at "Pulkovo-3"</h3>
+</ion-item>
+<ion-item class="item-divider">
+    <h4>
+        Arrival ({{
+            vm.flight.arrival && vm.flight.arrival['ЭтоВнутреннийРейс']
+                ? 'domestic'
+                : 'international'
+        }})
+    </h4>
+</ion-item>
+<ion-item>
+    <div class="gho_pax-service">
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Adults</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP3
+                        .arrival.adults
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Children</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP3
+                        .arrival.children
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Infants</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP3
+                        .arrival.infants
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Transit</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP3
+                        .arrival.transit
+                }}
+            </div>
+        </div>
+    </div>
+</ion-item>
+
+<ion-item class="item-divider">
+    <h4>
+        Departure ({{
+            vm.flight.departure && vm.flight.departure['ЭтоВнутреннийРейс']
+                ? 'domestic'
+                : 'international'
+        }})
+    </h4>
+</ion-item>
+<ion-item>
+    <div class="gho_pax-service">
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Adults</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP3
+                        .departure.adults
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Children</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP3
+                        .departure.children
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Infants</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP3
+                        .departure.infants
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Transit</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP3
+                        .departure.transit
+                }}
+            </div>
+        </div>
+    </div>
+</ion-item>
+
+<ion-item class="item-divider"> <h3>VIP Parking</h3> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.passengerService.VIPParking.arrival"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.passengerService.VIPParking.departure"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider">
+    <h3>Passenger service at "Pulkovo-1,2"</h3>
+</ion-item>
+<ion-item class="item-divider"> <h4>Arrival</h4> </ion-item>
+<ion-item>
+    <div class="gho_pax-service">
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Adults</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP12
+                        .arrival.adults
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Children</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP12
+                        .arrival.children
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Infants</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP12
+                        .arrival.infants
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Transit</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP12
+                        .arrival.transit
+                }}
+            </div>
+        </div>
+    </div>
+</ion-item>
+
+<ion-item class="item-divider"> <h4>Departure</h4> </ion-item>
+<ion-item>
+    <div class="gho_pax-service">
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Adults</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP12
+                        .departure.adults
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Children</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP12
+                        .departure.children
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Infants</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP12
+                        .departure.infants
+                }}
+            </div>
+        </div>
+        <div class="gho_pax-service_item">
+            <div class="gho_pax-service_item_title">Transit</div>
+            <div>
+                {{
+                    vm.ghoDataFromFlight.passengerService.passengerServiceP12
+                        .departure.transit
+                }}
+            </div>
+        </div>
+    </div>
+</ion-item>
+
+<ion-item class="item-divider"> <h3>Sport team service</h3> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.passengerService.sportTeamService.arrival"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.passengerService.sportTeamService.departure"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider"><h3>Apron transfer</h3></ion-item>
+<ion-item class="item-divider"><h4>Arrival</h4></ion-item>
+<div class="item row passenger-apron-transfer">
+    <p>
+        <span class="gho_transfer_field_title">PAX:</span
+        ><span>{{
+            vm.ghoDataFromFlight.passengerService.apronTransfer.arrival.pax
+        }}</span>
+    </p>
+    <p>
+        <span class="gho_transfer_field_title">Luggage:</span>
+        <span>{{
+            vm.ghoDataFromFlight.passengerService.apronTransfer.arrival.luggage
+        }}</span>
+    </p>
+    <p>
+        <span class="gho_transfer_field_title">Representative:</span>
+        <span>{{
+            vm.ghoDataFromFlight.passengerService.apronTransfer.arrival
+                .representative
+        }}</span>
+    </p>
+    <p>
+        <span class="gho_transfer_field_title">Total:</span>
+        <span>{{
+            vm.ghoDataFromFlight.passengerService.apronTransfer.arrival.total
+        }}</span>
+    </p>
+</div>
+<ion-item class="item-divider"><h4>Departure</h4></ion-item>
+<div class="item row passenger-apron-transfer">
+    <p>
+        <span class="gho_transfer_field_title">PAX:</span
+        ><span>{{
+            vm.ghoDataFromFlight.passengerService.apronTransfer.departure.pax
+        }}</span>
+    </p>
+    <p>
+        <span class="gho_transfer_field_title">Luggage:</span>
+        <span>{{
+            vm.ghoDataFromFlight.passengerService.apronTransfer.departure
+                .luggage
+        }}</span>
+    </p>
+    <p>
+        <span class="gho_transfer_field_title">Representative:</span>
+        <span>{{
+            vm.ghoDataFromFlight.passengerService.apronTransfer.departure
+                .representative
+        }}</span>
+    </p>
+    <p>
+        <span class="gho_transfer_field_title">Total:</span>
+        <span>{{
+            vm.ghoDataFromFlight.passengerService.apronTransfer.departure.total
+        }}</span>
+    </p>
+</div>
+
+<ion-item class="item-divider"><h3>City transfer</h3></ion-item>
+<ion-list class="transfer-list">
+    <ion-item
+        ng-repeat="item in paxTransfers = (vm.flight['Транспорт'] | filter:vm.transfersFilter('PAX')) track by $index"
+    >
+        <h4>Transfer #{{ $index + 1 }}</h4>
+        <div>
+            <p>
+                <span class="gho_transfer_field_title">Agent:</span
+                ><span>{{ item['Агент'] }}</span>
+            </p>
+            <p>
+                <span class="gho_transfer_field_title">Date:</span
+                ><span>{{ vm.getDate(item['Дата'], '-', true) }}</span>
+            </p>
+            <p>
+                <span class="gho_transfer_field_title">From:</span
+                ><span>{{ item['МестоПодачи'] }}</span>
+            </p>
+            <p>
+                <span class="gho_transfer_field_title">To:</span
+                ><span>{{ item['ПунктНазначения'] }}</span>
+            </p>
+            <p>
+                <span class="gho_transfer_field_title">Comment:</span
+                ><span>{{ item['Комментарий'] }}</span>
+            </p>
+        </div>
+    </ion-item>
+    <ion-item ng-if="!paxTransfers.length" class="gho_transfers__empty"
+        >No transfers</ion-item
+    >
+</ion-list>
+
+<ion-item class="item-divider"> <h3>Luggage handling</h3> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.passengerService.luggageHandling.arrival"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.passengerService.luggageHandling.departure"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider"> <h3>PAX storage</h3> </ion-item>
+<ion-item class="item-divider"> <h4>Arrival</h4> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Count</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.passengerService.storage.arrival.count"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Days</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.passengerService.storage.arrival.days"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+<ion-item class="item-divider"> <h4>Departure</h4> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Count</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.passengerService.storage.departure.count"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Days</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.passengerService.storage.departure.days"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<ion-view view-title="{{'PROFILE' | translate}}">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-divider">
+                <h2>{{"LANGUAGE" | translate}}</h2>
+            </ion-item>
+            <ion-radio ng-model="vm.lang" value="ru" ng-change="vm.changeLang()">Русский</ion-radio>
+            <ion-radio ng-model="vm.lang" value="en" ng-change="vm.changeLang()">English</ion-radio>
+            <ion-item class="item-divider">
+                <h2>{{"SIGNATURE" | translate}}</h2>
+            </ion-item>
+            <ion-item>
+                <img style="width:100%" ng-src="{{ vm.user['Подпись'] }}"/>
+                <button class="button-block button button-positive" on-tap="vm.changeSignature()">{{ (vm.user['Подпись'] ? "CHANGE_SIGNATURE" : "CREATE_SIGNATURE") | translate}}</button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

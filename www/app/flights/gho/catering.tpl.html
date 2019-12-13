@@ -1,0 +1,32 @@
+<ion-item class="item-divider primary"> <h2>Catering</h2> </ion-item>
+<label class="item item-input item-select">
+    <span class="input-label">Catering arrangement</span>
+    <select
+        ng-model="vm.gho.catering.cateringArrangement"
+        ng-disabled="vm.disabled"
+        ng-options="option as option.name for option in vm.cateringAgents track by option.id"
+    >
+        <option value="">-</option>
+    </select>
+</label>
+<label class="item item-input item-select">
+    <span class="input-label">Catering delivery</span>
+    <select
+        ng-model="vm.gho.catering.cateringDelivery"
+        ng-disabled="vm.disabled"
+    >
+        <option value="">-</option>
+        <option value="Apron delivery">Apron delivery</option>
+        <option value="City delivery">City delivery</option>
+    </select>
+</label>
+<label class="item item-input">
+    <span class="input-label">Catering customs clearance</span>
+    <input
+        type="number"
+        min="0"
+        ng-model="vm.gho.catering.customsClearance"
+        ng-disabled="vm.disabled"
+        select-on-focus
+    />
+</label>

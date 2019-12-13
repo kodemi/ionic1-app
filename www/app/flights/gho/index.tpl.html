@@ -1,0 +1,105 @@
+<ion-view title="{{ vm.title }}">
+    <ion-nav-buttons side="right">
+        <button
+            class="button button-icon icon ion-android-more-vertical"
+            on-tap="vm.showOperations()"
+        ></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list class="gho">
+            <ng-include src="'app/flights/gho/services.tpl.html'"></ng-include>
+            <ng-include
+                src="'app/flights/gho/crew-service.tpl.html'"
+            ></ng-include>
+            <ng-include src="'app/flights/gho/catering.tpl.html'"></ng-include>
+            <ng-include
+                src="'app/flights/gho/other-services.tpl.html'"
+            ></ng-include>
+            <ng-include
+                src="'app/flights/gho/passenger-service.tpl.html'"
+            ></ng-include>
+
+            <!-- <ion-item class="item-divider primary"
+                ><h2>Additional remarks</h2></ion-item
+            >
+            <label class="item item-input" ng-if="!vm.disabled">
+                <textarea
+                    rows="5"
+                    ng-model="vm.gho.additionalRemarks"
+                ></textarea>
+            </label>
+            <ion-item ng-if="vm.disabled">
+                <p style="white-space: normal">
+                    {{ vm.gho.additionalRemarks }}
+                </p>
+            </ion-item> -->
+            <label class="item item-input">
+                <span class="input-label">Captain name</span>
+                <input
+                    type="text"
+                    ng-model="vm.gho.captain"
+                    ng-disabled="vm.disabled"
+                    select-on-focus
+                />
+            </label>
+
+            <ion-item
+                ng-show="vm.flight['ВремяGHO']"
+                class="item-divider primary"
+                ><h2>Services provided</h2></ion-item
+            >
+            <ion-item ng-show="vm.flight['ВремяGHO']">
+                <rating
+                    class="text-center"
+                    ng-model="vm.gho['Оценка']"
+                    max="5"
+                    readonly="true"
+                ></rating>
+                <h3 class="text-center">{{ vm.rateDescription }}</h3>
+            </ion-item>
+
+            <ion-item
+                ng-show="vm.flight['ВремяGHO']"
+                class="item-divider primary"
+            >
+                <h2>Crew signature</h2>
+            </ion-item>
+            <ion-item ng-if="vm.gho['ПодписьЭкипажа']">
+                <img
+                    style="width:100%"
+                    ng-src="{{
+                        'data:image/png;base64,' +
+                            vm.gho['ПодписьЭкипажа'].replace(
+                                'data:image/png;base64,',
+                                ''
+                            )
+                    }}"
+                />
+            </ion-item>
+
+            <ion-item>
+                <button
+                    class="button button-block button-calm"
+                    on-tap="vm.save()"
+                    ng-show="!vm.flight['ВремяGHO'] && !vm.disabled"
+                >
+                    {{ 'GHO.SAVE' | translate }}
+                </button>
+                <button
+                    class="button button-block button-balanced"
+                    ng-show="!vm.sendError && !vm.gho['ПодписьЭкипажа'] && vm.flight && !vm.flight['ВремяGHO'] && !!vm.flight.departure"
+                    on-tap="vm.sign()"
+                >
+                    {{ 'GHO.SIGN_AND_SEND' | translate }}
+                </button>
+                <button
+                    class="button button-block button-balanced"
+                    ng-show="!vm.disabled && vm.flight.GHO && vm.flight['ВремяGHO'] || vm.sendError || vm.gho['ПодписьЭкипажа']"
+                    on-tap="vm.sendWithoutSign()"
+                >
+                    {{ 'GHO.SEND' | translate }}
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

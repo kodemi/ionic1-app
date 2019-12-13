@@ -1,0 +1,24 @@
+<ion-view hide-back-button="{{ false }}">
+    <ion-nav-title> {{ vm.flight['ВС'] }} </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <button
+            class="button button-icon icon ion-android-more-vertical"
+            on-tap="vm.showFlightOperations()"
+        ></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <ion-refresher
+            pulling-text="{{ 'PULL_TO_REFRESH' | translate }}"
+            on-refresh="vm.doRefresh()"
+        >
+        </ion-refresher>
+        <div class="list">
+            <ng-include
+                src="'app/flights/flightItem/info.tpl.html'"
+            ></ng-include>
+            <ng-include
+                src="'app/flights/flightItem/operations.tpl.html'"
+            ></ng-include>
+        </div>
+    </ion-content>
+</ion-view>

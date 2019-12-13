@@ -1,0 +1,257 @@
+<ion-item class="item-divider primary"> <h2>Other services</h2> </ion-item>
+<ion-item class="item-divider"> <h3>Hotel reservation</h3> </ion-item>
+<ion-item>
+    <div ng-if="!vm.flight['Гостиницы']">
+        <span class="gho_hotel__no-reservations">No hotel reservations</span>
+    </div>
+    <div ng-repeat="hotel in vm.flight['Гостиницы']" class="gho_hotel">
+        <p class="gho_hotel_title">
+            {{ hotel['ГостиницаАнгл'] || hotel['Гостиница'] }}
+        </p>
+        <p class="gho_hotel_comment">{{ hotel['Примечание'] }}</p>
+    </div>
+</ion-item>
+
+<ion-item class="item-divider"><h3>Newspapers</h3></ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.newspapers.arrival"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.newspapers.departure"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider"><h3>Magazines</h3></ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.magazines.arrival"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.magazines.departure"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider"><h3>Foreign Newspapers</h3></ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.foreignNewspapers.arrival"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.foreignNewspapers.departure"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider"><h3>Meeting room</h3></ion-item>
+<ion-item class="item-divider"> <h4>Arrival</h4> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Room</span>
+            <input
+                type="text"
+                ng-model="vm.ghoDataFromFlight.other.meetingRoom.arrival.room"
+                ng-disabled="true"
+            />
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Hours</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.meetingRoom.arrival.hours"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+<ion-item class="item-divider"> <h4>Departure</h4> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Room</span>
+            <input
+                type="text"
+                ng-model="vm.ghoDataFromFlight.other.meetingRoom.departure.room"
+                ng-disabled="true"
+            />
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Hours</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.meetingRoom.departure.hours"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<label class="item item-input">
+    <span class="input-label"
+        >Car rental for guarding without moving (hours)</span
+    >
+    <input
+        type="number"
+        min="0"
+        ng-model="vm.gho.other.carRentalForGuarding"
+        ng-disabled="vm.disabled"
+        select-on-focus
+    />
+</label>
+
+<ion-item class="item-divider"
+    ><h3>On/offboard weapon delivery loading/unloading</h3></ion-item
+>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.weapon.arrival"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.weapon.departure"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider"
+    ><h3>Personal single pass for restricted areas</h3></ion-item
+>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.personalSinglePass.arrival"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.personalSinglePass.departure"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider"><h3>People escorting</h3></ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.peopleEscorting.arrival"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.ghoDataFromFlight.other.peopleEscorting.departure"
+                ng-disabled="true"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<label class="item item-input">
+    <span class="input-label">Personal guard (hours)</span>
+    <input
+        type="number"
+        min="0"
+        ng-model="vm.gho.other.personalGuard"
+        ng-disabled="vm.disabled"
+        select-on-focus
+    />
+</label>

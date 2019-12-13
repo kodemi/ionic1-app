@@ -1,0 +1,215 @@
+<ion-item class="item-divider primary"> <h2>Crew service</h2> </ion-item>
+
+<ion-item class="item-divider"> <h3>Crew lounge</h3> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Count</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.crewService.crewLounge.count"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Hours</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.crewService.crewLounge.hours"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider"> <h3>Crew storage</h3> </ion-item>
+<ion-list class="crew-storage-list">
+    <ion-item ng-repeat="row in vm.gho.crewService.crewStorage track by $index">
+        <h4>Storage #{{ $index + 1 }}</h4>
+        <div class="crew-storage-item">
+            <label class="item-input">
+                <span class="input-label">Count</span>
+                <input
+                    type="number"
+                    min="0"
+                    ng-model="row.count"
+                    ng-disabled="vm.disabled"
+                    select-on-focus
+                />
+            </label>
+
+            <label class="item-input">
+                <span class="input-label">Days</span>
+                <input
+                    type="number"
+                    min="0"
+                    ng-model="row.days"
+                    ng-disabled="vm.disabled"
+                    select-on-focus
+                />
+            </label>
+        </div>
+
+        <ion-option-button
+            ng-if="!vm.disabled"
+            class="button-assertive"
+            ng-click="vm.removeCrewStorage($index)"
+        >
+            <i class="ion-trash-a"></i>
+        </ion-option-button>
+    </ion-item>
+</ion-list>
+<button
+    class="button button-block"
+    ng-if="!vm.disabled"
+    on-tap="vm.addCrewStorage()"
+>
+    <i class="icon ion-plus"></i>
+</button>
+
+<ion-item class="item-divider"><h3>Apron transfer</h3></ion-item>
+<ion-list class="transfer-list">
+    <ion-item
+        ng-repeat="row in vm.gho.crewService.apronTransfer track by $index"
+    >
+        <h4>Transfer #{{ $index + 1 }}</h4>
+        <label class="item-input">
+            <input
+                type="text"
+                placeholder="Comment"
+                ng-model="row.comment"
+                ng-disabled="vm.disabled"
+            />
+        </label>
+        <ion-option-button
+            ng-if="!vm.disabled"
+            class="button-assertive"
+            ng-click="vm.removeTransfer('crew', 'apron', $index)"
+        >
+            <i class="ion-trash-a"></i>
+        </ion-option-button>
+    </ion-item>
+</ion-list>
+<button
+    class="button button-block"
+    ng-if="!vm.disabled"
+    on-tap="vm.addTransfer('crew', 'apron')"
+>
+    <i class="icon ion-plus"></i>
+</button>
+
+<ion-item class="item-divider"><h3>City transfer</h3></ion-item>
+<ion-list class="transfer-list">
+    <ion-item
+        ng-repeat="item in crewTransfers = (vm.sortByDate(vm.flight['Транспорт']) | filter:vm.transfersFilter('crew')) track by $index"
+    >
+        <h4>Transfer #{{ $index + 1 }}</h4>
+        <div>
+            <p>
+                <span class="gho_transfer_field_title">Agent:</span
+                ><span>{{ item['Агент'] }}</span>
+            </p>
+            <p>
+                <span class="gho_transfer_field_title">Date:</span
+                ><span>{{ vm.getDate(item['Дата'], '-', true) }}</span>
+            </p>
+            <p>
+                <span class="gho_transfer_field_title">From:</span
+                ><span>{{ item['МестоПодачи'] }}</span>
+            </p>
+            <p>
+                <span class="gho_transfer_field_title">To:</span
+                ><span>{{ item['ПунктНазначения'] }}</span>
+            </p>
+            <p>
+                <span class="gho_transfer_field_title">Comment:</span
+                ><span>{{ item['Комментарий'] }}</span>
+            </p>
+        </div>
+    </ion-item>
+    <ion-item ng-if="!crewTransfers.length" class="gho_transfers__empty"
+        >No transfers</ion-item
+    >
+</ion-list>
+
+<ion-item class="item-divider"> <h3>Fast track for crew</h3> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.crewService.fastTrackCrew.arrival"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.crewService.fastTrackCrew.departure"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<ion-item class="item-divider"> <h3>Luggage handling</h3> </ion-item>
+<div class="item row">
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Arrival</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.crewService.luggageHandling.arrival"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+    <div class="col">
+        <label class="item item-input">
+            <span class="input-label">Departure</span>
+            <input
+                type="number"
+                min="0"
+                ng-model="vm.gho.crewService.luggageHandling.departure"
+                ng-disabled="vm.disabled"
+                select-on-focus
+            />
+        </label>
+    </div>
+</div>
+
+<label class="item item-input">
+    <span class="input-label">Visa services</span>
+    <input
+        type="number"
+        min="0"
+        ng-model="vm.gho.crewService.visaServices"
+        ng-disabled="vm.disabled"
+        select-on-focus
+    />
+</label>
+
+<ion-toggle
+    ng-model="vm.gho.crewService.urgentVisaArrangement"
+    ng-disabled="vm.disabled"
+    >Urgent visa arrangement</ion-toggle
+>
+<ion-toggle ng-model="vm.gho.crewService.photoForVisa" ng-disabled="vm.disabled"
+    >Photo for visa</ion-toggle
+>
