@@ -8,9 +8,9 @@
         "publish": "appcenter codepush release-cordova -a dkonchekov-oqoc/spb -d Production"
     },
     "devDependencies": {
-        "@ionic/v1-toolkit": "^1.0.0-rc.5",
+        "@ionic/v1-toolkit": "^3.2.20",
         "bower": "^1.8.4",
-        "gulp": "^3.5.6",
+        "gulp": "^4.0.2",
         "gulp-clean-css": "^3.7.0",
         "gulp-rename": "^1.2.0",
         "gulp-sass": "^3.1.0"
